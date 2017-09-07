@@ -1,8 +1,11 @@
 package com.chargedot.server;
 
 import com.chargedot.domain.Session;
+import com.chargedot.protocal.DataPacketPicker;
+import com.chargedot.protocal.DataPacketResolver;
 import com.chargedot.server.handler.DataPacketHandler;
 import com.chargedot.server.handler.ProtocolDecoder;
+import com.chargedot.server.handler.ProtocolEncoder;
 import com.jcraft.jsch.Channel;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -53,6 +56,8 @@ public class Server {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup(4);
         bootstrap = new ServerBootstrap();
+        DataPacketResolver dataPacketResolver = new DataPacketResolver();
+        DataPacketPicker dataPacketPicker = new DataPacketPicker();
         bootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -60,8 +65,8 @@ public class Server {
                     protected void initChannel(SocketChannel ch) throws Exception {
                         Session session = Session.create();
                         ChannelPipeline pipeline = ch.pipeline();
-                        pipeline.addLast(new ProtocolDecoder(session));
-                        pipeline.addLast(new ProtocolDecoder(session));
+                        pipeline.addLast(new ProtocolDecoder(session, dataPacketPicker, dataPacketResolver));
+                        pipeline.addLast(new ProtocolEncoder(session));
                         pipeline.addLast(new DataPacketHandler(session));
                     }
                 })

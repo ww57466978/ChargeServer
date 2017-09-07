@@ -1,6 +1,8 @@
 package com.chargedot.server.handler;
 
 import com.chargedot.domain.Session;
+import com.chargedot.protocal.DataPacketPicker;
+import com.chargedot.protocal.DataPacketResolver;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -14,8 +16,14 @@ public class ProtocolDecoder extends ByteToMessageDecoder {
 
     private Session session;
 
-    public ProtocolDecoder(Session session){
+    private DataPacketPicker dataPacketPicker;
+
+    private DataPacketResolver dataPacketResolver;
+
+    public ProtocolDecoder(Session session, DataPacketPicker dataPacketPicker, DataPacketResolver dataPacketResolver) {
         this.session = session;
+        this.dataPacketPicker = dataPacketPicker;
+        this.dataPacketResolver = dataPacketResolver;
     }
 
     @Override
