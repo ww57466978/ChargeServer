@@ -4,6 +4,7 @@ import com.chargedot.protocal.DataPacket;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Created by Administrator on 2017/9/5.
@@ -21,10 +22,12 @@ public class OutboundDataPacketManager {
 
     private BlockingQueue<DataPacket> queue;
 
-    public void init(){
-        queue = new ArrayBlockingQueue<DataPacket>(100);
-        for (int i =0 ; i < 3; i++){
+    private ExecutorService outboundThreadPool;
 
+    public void init(){
+        queue = new ArrayBlockingQueue<DataPacket>(1000);
+        for (int i =0 ; i < 3; i++){
+            outboundThreadPool.execute(new OutboundProcess(queue));
         }
     }
 

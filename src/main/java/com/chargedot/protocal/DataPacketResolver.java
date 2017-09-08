@@ -13,6 +13,11 @@ public class DataPacketResolver {
             public void process() {
 
             }
+
+            @Override
+            public void processComplete() {
+
+            }
         };
     }
 }

@@ -17,4 +17,6 @@ public abstract class DataPacket {
     }
 
     public abstract void process();
+
+    public abstract void processComplete();
 }

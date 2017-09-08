@@ -6,7 +6,6 @@ import com.chargedot.protocal.DataPacketResolver;
 import com.chargedot.server.handler.DataPacketHandler;
 import com.chargedot.server.handler.ProtocolDecoder;
 import com.chargedot.server.handler.ProtocolEncoder;
-import com.jcraft.jsch.Channel;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;

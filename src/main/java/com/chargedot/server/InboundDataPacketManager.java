@@ -26,7 +26,7 @@ public class InboundDataPacketManager {
     private ExecutorService inboundThreadPool;
 
     public void init(){
-        queue = new ArrayBlockingQueue<DataPacket>(100);
+        queue = new ArrayBlockingQueue<DataPacket>(1000);
         for (int i = 0; i < 3 ; i++){
             inboundThreadPool.execute(new InboundProcess((queue)));
         }
