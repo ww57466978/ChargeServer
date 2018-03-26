@@ -40,7 +40,7 @@ public class Server {
     private Server() {
     }
 
-    public static Server getInstance() {
+    private static Server getInstance() {
         return ourInstance;
     }
 
