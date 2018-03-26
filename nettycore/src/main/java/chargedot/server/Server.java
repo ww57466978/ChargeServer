@@ -83,7 +83,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        log.info("server is starting... ");
+        log.info("server is starting...  ");
         Server.getInstance().run();
     }
 }
