@@ -12,12 +12,12 @@ public class DataPacketResolver {
         return new DataPacket() {
             @Override
             public void process() {
-
+                //do sth.
             }
 
             @Override
             public void processComplete() {
-
+                //do sth.
             }
         };
     }
