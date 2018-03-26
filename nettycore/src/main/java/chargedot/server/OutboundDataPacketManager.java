@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  * 处理Server返回给clinet的DataPacket
  */
 public class OutboundDataPacketManager {
@@ -24,14 +24,14 @@ public class OutboundDataPacketManager {
 
     private ExecutorService outboundThreadPool;
 
-    public void init(){
+    public void init() {
         queue = new ArrayBlockingQueue<DataPacket>(1000);
-        for (int i =0 ; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             outboundThreadPool.execute(new OutboundProcess(queue));
         }
     }
 
-    public void put(DataPacket dataPacket){
+    public void put(DataPacket dataPacket) {
         try {
             queue.put(dataPacket);
         } catch (InterruptedException e) {

@@ -6,19 +6,18 @@ import chargedot.domain.Session;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by Administrator on 2017/9/6.
+ * @author zhengye.zhang
  */
 public class SessionManager {
     private static SessionManager ourInstance = new SessionManager();
-
-    public static SessionManager getInstance() {
-        return ourInstance;
-    }
+    private ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<>(1000);
 
     private SessionManager() {
     }
 
-    private ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<>(1000);
+    public static SessionManager getInstance() {
+        return ourInstance;
+    }
 
 
 }

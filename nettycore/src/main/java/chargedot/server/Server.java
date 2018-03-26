@@ -17,21 +17,13 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class Server {
 
     private static final Logger log = LoggerFactory.getLogger(Server.class);
 
     private static Server ourInstance = new Server();
-
-    public static Server getInstance() {
-        return ourInstance;
-    }
-
-    private Server() {
-    }
-
     /**
      * netty boss group
      */
@@ -45,8 +37,19 @@ public class Server {
      */
     private ServerBootstrap bootstrap;
 
+    private Server() {
+    }
 
-    private void init(){
+    public static Server getInstance() {
+        return ourInstance;
+    }
+
+    public static void main(String[] args) {
+        log.info("server is starting...");
+        Server.getInstance().run();
+    }
+
+    private void init() {
         InboundDataPacketManager.getInstance().init();
         OutboundDataPacketManager.getInstance().init();
 
@@ -73,21 +76,16 @@ public class Server {
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
     }
 
-    public void run(){
+    public void run() {
         init();
         try {
             ChannelFuture channelFuture = bootstrap.bind(18701).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
-    }
-
-    public static void main(String[] args) {
-        log.info("server is starting...");
-        Server.getInstance().run();
     }
 }

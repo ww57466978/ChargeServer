@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class SessionIdGenerator {
     private final static SimpleDateFormat TS = new SimpleDateFormat("yyMMddHHmmss");
@@ -31,6 +31,7 @@ public class SessionIdGenerator {
 
     /**
      * get instance
+     *
      * @return
      */
     public static SessionIdGenerator getInstance() {
@@ -39,6 +40,7 @@ public class SessionIdGenerator {
 
     /**
      * generate an id
+     *
      * @return
      */
     public synchronized String generate() {

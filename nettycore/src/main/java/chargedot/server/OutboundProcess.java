@@ -5,7 +5,7 @@ import chargedot.protocal.DataPacket;
 import java.util.concurrent.BlockingQueue;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class OutboundProcess implements Runnable {
 

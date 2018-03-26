@@ -7,7 +7,7 @@ import io.netty.channel.ChannelHandlerContext;
 import java.util.Random;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class Session {
 
@@ -43,11 +43,12 @@ public class Session {
         this.id = id;
         status = INITIAL;
         refreshedAt = System.currentTimeMillis();
-        serverRandomNumber = (byte)RAND.nextInt(255);
+        serverRandomNumber = (byte) RAND.nextInt(255);
     }
 
     /**
      * create a new session
+     *
      * @return
      */
     public static Session create() {
@@ -56,6 +57,7 @@ public class Session {
 
     /**
      * is time out
+     *
      * @return
      */
     public boolean isTimeout() {
@@ -71,6 +73,7 @@ public class Session {
 
     /**
      * is active
+     *
      * @return
      */
     public boolean isActive() {
@@ -82,6 +85,7 @@ public class Session {
 
     /**
      * session ready
+     *
      * @param ctx
      */
     public void ready(ChannelHandlerContext ctx) {
@@ -101,6 +105,7 @@ public class Session {
 
     /**
      * session active
+     *
      * @param deviceNumber
      */
     public void active(String deviceNumber, String port) {
@@ -148,6 +153,7 @@ public class Session {
 
     /**
      * send data packet
+     *
      * @param packet
      */
     public void send(DataPacket packet) {

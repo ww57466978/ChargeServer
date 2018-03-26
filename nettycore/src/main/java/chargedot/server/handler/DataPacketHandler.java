@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class DataPacketHandler extends ChannelInboundHandlerAdapter {
 
@@ -18,7 +18,7 @@ public class DataPacketHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-       session.ready(ctx);
+        session.ready(ctx);
     }
 
     @Override

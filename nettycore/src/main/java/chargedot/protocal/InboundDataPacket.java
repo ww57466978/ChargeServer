@@ -1,14 +1,15 @@
 package chargedot.protocal;
 
 /**
- * Created by Administrator on 2017/9/6.
+ * @author zhengye.zhang
  */
-public class InboundDataPacket extends  DataPacket {
+public class InboundDataPacket extends DataPacket {
 
     @Override
     public void process() {
 
     }
+
     @Override
     public void processComplete() {
 

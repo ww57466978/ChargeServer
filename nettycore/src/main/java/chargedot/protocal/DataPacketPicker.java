@@ -4,11 +4,11 @@ import chargedot.domain.Session;
 import io.netty.buffer.ByteBuf;
 
 /**
- * Created by Administrator on 2017/9/7.
+ * @author zhengye.zhang
  */
 public class DataPacketPicker {
 
-    public byte[] pickup(Session session, ByteBuf in)  {
+    public byte[] pickup(Session session, ByteBuf in) {
         byte[] data = null;
         return data;
     }

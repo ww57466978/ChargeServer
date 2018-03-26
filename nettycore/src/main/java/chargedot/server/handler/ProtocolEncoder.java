@@ -7,13 +7,13 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public class ProtocolEncoder extends MessageToByteEncoder<DataPacket> {
 
     private Session session;
 
-    public ProtocolEncoder(Session session){
+    public ProtocolEncoder(Session session) {
         this.session = session;
     }
 

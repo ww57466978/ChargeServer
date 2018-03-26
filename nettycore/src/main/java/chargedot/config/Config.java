@@ -1,7 +1,7 @@
 package chargedot.config;
 
 /**
- * Created by Administrator on 2017/9/8.
+ * @author zhengye.zhang
  */
 public class Config {
     public static int port;

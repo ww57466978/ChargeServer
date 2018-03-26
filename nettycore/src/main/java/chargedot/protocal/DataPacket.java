@@ -4,7 +4,7 @@ package chargedot.protocal;
 import chargedot.domain.Session;
 
 /**
- * Created by Administrator on 2017/9/5.
+ * @author zhengye.zhang
  */
 public abstract class DataPacket {
     private Session session;

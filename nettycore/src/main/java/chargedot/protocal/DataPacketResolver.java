@@ -4,12 +4,12 @@ package chargedot.protocal;
 import chargedot.domain.Session;
 
 /**
- * Created by Administrator on 2017/9/7.
+ * @author zhengye.zhang
  */
 public class DataPacketResolver {
 
-    public DataPacket resolve(Session session, byte[] data){
-        return  new DataPacket() {
+    public DataPacket resolve(Session session, byte[] data) {
+        return new DataPacket() {
             @Override
             public void process() {
 

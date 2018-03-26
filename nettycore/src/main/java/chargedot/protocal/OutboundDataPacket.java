@@ -1,7 +1,7 @@
 package chargedot.protocal;
 
 /**
- * Created by Administrator on 2017/9/6.
+ * @author zhengye.zhang
  */
 public class OutboundDataPacket extends DataPacket {
 
@@ -9,6 +9,7 @@ public class OutboundDataPacket extends DataPacket {
     public void process() {
 
     }
+
     @Override
     public void processComplete() {
 
