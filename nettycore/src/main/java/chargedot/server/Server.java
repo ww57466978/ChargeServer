@@ -44,14 +44,7 @@ public class Server {
         return ourInstance;
     }
 
-    public static void main(String[] args) {
-        log.info("server is starting...");
-        Server.getInstance().run();
-    }
-
     private void init() {
-        InboundDataPacketManager.getInstance().init();
-        OutboundDataPacketManager.getInstance().init();
 
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup(4);
@@ -76,7 +69,7 @@ public class Server {
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
     }
 
-    public void run() {
+    private void run() {
         init();
         try {
             ChannelFuture channelFuture = bootstrap.bind(18701).sync();
@@ -87,5 +80,10 @@ public class Server {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) {
+        log.info("server is starting...");
+        Server.getInstance().run();
     }
 }

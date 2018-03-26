@@ -5,6 +5,8 @@ package chargedot.protocal;
  */
 public class InboundDataPacket extends DataPacket {
 
+    private Object inboundDataPacket;
+
     @Override
     public void process() {
 
