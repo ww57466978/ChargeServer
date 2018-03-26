@@ -1,7 +1,7 @@
-package com.chargedot.server.handler;
+package chargedot.server.handler;
 
-import com.chargedot.domain.Session;
-import com.chargedot.protocal.DataPacket;
+import chargedot.domain.Session;
+import chargedot.protocal.DataPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 

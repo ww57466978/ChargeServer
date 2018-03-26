@@ -1,4 +1,4 @@
-package com.chargedot.domain;
+package chargedot.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

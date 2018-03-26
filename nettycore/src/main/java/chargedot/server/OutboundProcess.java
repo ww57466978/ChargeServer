@@ -1,6 +1,6 @@
-package com.chargedot.server;
+package chargedot.server;
 
-import com.chargedot.protocal.DataPacket;
+import chargedot.protocal.DataPacket;
 
 import java.util.concurrent.BlockingQueue;
 

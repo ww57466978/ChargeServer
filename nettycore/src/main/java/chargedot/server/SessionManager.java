@@ -1,6 +1,7 @@
-package com.chargedot.server;
+package chargedot.server;
 
-import com.chargedot.domain.Session;
+
+import chargedot.domain.Session;
 
 import java.util.concurrent.ConcurrentHashMap;
 

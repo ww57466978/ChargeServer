@@ -1,7 +1,7 @@
-package com.chargedot.domain;
+package chargedot.domain;
 
-import com.chargedot.protocal.DataPacket;
-import com.chargedot.server.InboundDataPacketManager;
+import chargedot.protocal.DataPacket;
+import chargedot.server.InboundDataPacketManager;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.Random;

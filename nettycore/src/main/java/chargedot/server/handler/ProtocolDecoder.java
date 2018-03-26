@@ -1,8 +1,9 @@
-package com.chargedot.server.handler;
+package chargedot.server.handler;
 
-import com.chargedot.domain.Session;
-import com.chargedot.protocal.DataPacketPicker;
-import com.chargedot.protocal.DataPacketResolver;
+
+import chargedot.domain.Session;
+import chargedot.protocal.DataPacketPicker;
+import chargedot.protocal.DataPacketResolver;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

@@ -1,6 +1,7 @@
-package com.chargedot.protocal;
+package chargedot.protocal;
 
-import com.chargedot.domain.Session;
+
+import chargedot.domain.Session;
 
 /**
  * Created by Administrator on 2017/9/7.

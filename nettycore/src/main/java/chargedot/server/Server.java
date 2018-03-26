@@ -1,22 +1,20 @@
-package com.chargedot.server;
+package chargedot.server;
 
-import com.chargedot.domain.Session;
-import com.chargedot.protocal.DataPacketPicker;
-import com.chargedot.protocal.DataPacketResolver;
-import com.chargedot.server.handler.DataPacketHandler;
-import com.chargedot.server.handler.ProtocolDecoder;
-import com.chargedot.server.handler.ProtocolEncoder;
+import chargedot.domain.Session;
+import chargedot.protocal.DataPacketPicker;
+import chargedot.protocal.DataPacketResolver;
+import chargedot.server.handler.DataPacketHandler;
+import chargedot.server.handler.ProtocolDecoder;
+import chargedot.server.handler.ProtocolEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ExecutorService;
 
 /**
  * Created by Administrator on 2017/9/5.
@@ -55,13 +53,13 @@ public class Server {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup(4);
         bootstrap = new ServerBootstrap();
-        DataPacketResolver dataPacketResolver = new DataPacketResolver();
-        DataPacketPicker dataPacketPicker = new DataPacketPicker();
+        final DataPacketResolver dataPacketResolver = new DataPacketResolver();
+        final DataPacketPicker dataPacketPicker = new DataPacketPicker();
         bootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
+                    protected void initChannel(SocketChannel ch) {
                         Session session = Session.create();
                         ChannelPipeline pipeline = ch.pipeline();
                         pipeline.addLast(new ProtocolDecoder(session, dataPacketPicker, dataPacketResolver));
