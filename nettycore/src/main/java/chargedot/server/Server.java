@@ -20,8 +20,11 @@ import org.slf4j.LoggerFactory;
  * @author zhengye.zhang
  */
 public class Server {
+    private static final int NET_PORT = 18701;
 
-    private static final Logger log = LoggerFactory.getLogger(Server.class);
+    private static final int WORK_THREAD_COUNT = 4;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Server.class);
 
     private static Server ourInstance = new Server();
     /**
@@ -47,7 +50,7 @@ public class Server {
     private void init() {
 
         bossGroup = new NioEventLoopGroup();
-        workerGroup = new NioEventLoopGroup(4);
+        workerGroup = new NioEventLoopGroup(WORK_THREAD_COUNT);
         bootstrap = new ServerBootstrap();
         final DataPacketResolver dataPacketResolver = new DataPacketResolver();
         final DataPacketPicker dataPacketPicker = new DataPacketPicker();
@@ -63,19 +66,19 @@ public class Server {
                         pipeline.addLast(new DataPacketHandler(session));
                     }
                 })
-                .option(ChannelOption.SO_REUSEADDR, true)
+                .option(ChannelOption.SO_REUSEADDR, Boolean.TRUE)
                 .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
                 .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+                .childOption(ChannelOption.SO_KEEPALIVE, Boolean.TRUE);
     }
 
     private void run() {
         init();
         try {
-            ChannelFuture channelFuture = bootstrap.bind(18701).sync();
+            ChannelFuture channelFuture = bootstrap.bind(NET_PORT).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.error("server is stop ... ", e);
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
@@ -83,7 +86,7 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        log.info("server is starting...  ");
+        LOGGER.info("server is starting...  ");
         Server.getInstance().run();
     }
 }
