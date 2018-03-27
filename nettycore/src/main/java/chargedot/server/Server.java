@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class Server {
     private static final int NET_PORT = 18701;
 
-    private static final int WORK_THREAD_COUNT = 4;
+    private static final int WORKER_THREAD_COUNT = 4;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Server.class);
 
@@ -50,7 +50,7 @@ public class Server {
     private void init() {
 
         bossGroup = new NioEventLoopGroup();
-        workerGroup = new NioEventLoopGroup(WORK_THREAD_COUNT);
+        workerGroup = new NioEventLoopGroup(WORKER_THREAD_COUNT);
         bootstrap = new ServerBootstrap();
         final DataPacketResolver dataPacketResolver = new DataPacketResolver();
         final DataPacketPicker dataPacketPicker = new DataPacketPicker();
