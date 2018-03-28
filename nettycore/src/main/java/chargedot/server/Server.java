@@ -12,6 +12,8 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,10 +57,14 @@ public class Server {
         final DataPacketResolver dataPacketResolver = new DataPacketResolver();
         final DataPacketPicker dataPacketPicker = new DataPacketPicker();
         // bossGroup handle all the events and workerGroup handle IO
+        // 设置mainReactor和subReactor
         bootstrap.group(bossGroup, workerGroup)
                 // NIO selector,  @see SelectionKey
+                // 设置mainReactor所对应的channel
                 .channel(NioServerSocketChannel.class)
-                // ChannelPipeline
+                // 设置NioServerSocketChannel所对应Pipeline中的Handler
+                .handler(new LoggingHandler(LogLevel.INFO))
+                // 为subReactor设置childHandler
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) {
