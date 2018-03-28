@@ -54,8 +54,11 @@ public class Server {
         bootstrap = new ServerBootstrap();
         final DataPacketResolver dataPacketResolver = new DataPacketResolver();
         final DataPacketPicker dataPacketPicker = new DataPacketPicker();
+        // bossGroup handle all the events and workerGroup handle IO
         bootstrap.group(bossGroup, workerGroup)
+                // NIO selector,  @see SelectionKey
                 .channel(NioServerSocketChannel.class)
+                // ChannelPipeline
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) {
