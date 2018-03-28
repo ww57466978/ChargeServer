@@ -50,7 +50,6 @@ public class Server {
     }
 
     private void init() {
-
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup(WORKER_THREAD_COUNT);
         bootstrap = new ServerBootstrap();
