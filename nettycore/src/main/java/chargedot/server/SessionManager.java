@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SessionManager {
     private static SessionManager ourInstance = new SessionManager();
-    private ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<>(1000);
+    private ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<String, Session>(1000);
 
     private SessionManager() {
     }

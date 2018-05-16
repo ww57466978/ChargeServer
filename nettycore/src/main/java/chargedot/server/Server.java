@@ -59,9 +59,9 @@ public class Server {
         // 设置mainReactor和subReactor
         bootstrap.group(bossGroup, workerGroup)
                 // NIO selector,  @see SelectionKey
-                // 设置mainReactor所对应的channel
+                // 设置mainReactor所对应的channel 生成DefaultChannelPipeline
                 .channel(NioServerSocketChannel.class)
-                // 设置NioServerSocketChannel所对应Pipeline中的Handler
+                // 设置NioServerSocketChannel所对应Pipeline中的Handler hear.next = LoggingHandler
                 .handler(new LoggingHandler(LogLevel.INFO))
                 // 为subReactor设置childHandler
                 .childHandler(new ChannelInitializer<SocketChannel>() {
