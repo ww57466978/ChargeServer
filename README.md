@@ -1,9 +1,5 @@
-# ChargeServer
-the server for client of chaegedevice
+# Netty Server
 
-
-
-基于netty构建一个充电设备的服务端
 
 
 selector.select()
